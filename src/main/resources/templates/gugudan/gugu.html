@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>구구단 출력</h1>
+<table border="0">
+    <th:block th:each="i : ${#numbers.sequence(2,9)}">
+        <tr>
+            <th th:text="|${i}단|"></th>
+        </tr>
+
+        <tr th:each="j : ${#numbers.sequence(1,9)}">
+            <td th:text="|${i} × ${j} = ${i*j}|"></td>
+        </tr>
+    </th:block>
+
+
+</table>
+
+
+
+</body>
+</html>
