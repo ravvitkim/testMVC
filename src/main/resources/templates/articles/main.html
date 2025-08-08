@@ -6,11 +6,78 @@
 </head>
 <body>
 <ul>
-
   <li><a href="/gugudan">구구단페이지</a> </li>
   <li><a href="/item">아이템리스트</a></li>
-  <li><a th:href="/article/list">게시판관리</a></li>
 </ul>
+<table border="1">
+    <tr>
+        <th>url</th>
+        <th>methode</th>
+        <th>출력내용</th>
+        <th>html page</th>
+    </tr>
+    <tr>
+        <td>/articles/list</td>
+        <td>GET</td>
+        <td><a th:href="@{|/articles/list|}">전체게시글 읽기 성공</a></td>
+        <td>list_all.html</td>
+    </tr>
+    <tr th:with="id=7">
+        <td>/articles/${id}</td>
+        <td>GET</td>
+        <td><a th:href="@{|/articles/${id}|}">[[${id}]]번 게시글 읽기 성공</a></td>
+        <td>list_one.html</td>
+    </tr>
+
+    <tr th:with="name=tom, weight=80, height=180">
+        <td>/articles/create?name=tom&weight=80&height=180</td>
+        <td>GET</td>
+        <td><a th:href="@{/articles/create(name=${name}, weight=${weight}, height=${height})}">
+            [[${name}]]의 몸무게는 [[${weight}]] 이고 키는 [[${height}]]입니다.
+        </a></td>
+        <td>new.html</td>
+    </tr>
+    <tr>
+        <td>/articles/update</td>
+        <td>GET</td>
+        <td><a th:href="@{/articles/update}">
+            업데이트 성공 화면 출력
+        </a></td>
+        <td>update_ok.html</td>
+    </tr>
+    <tr th:with="id=7">
+        <td>/articles/${id}/update</td>
+        <td>GET</td>
+        <td><a th:href="@{/articles/{id}/update(id=${id})}">
+            [[${id}]]번 게시글 수정 폼 로딩 완료</a></td>
+        <td>update.html</td>
+    </tr>
+    <tr th:with="id=3">
+        <td>/articles/{id}/delete</td>
+        <td>GET</td>
+        <td><a th:href="@{/articles/{id}/delete(id=${id})}">
+            [[${id}]]번 글 삭제 완료</a></td>
+        <td>delete_ok.html</td>
+    </tr>
+    <tr th:with="id=11">
+    <td>/articles/{id}/articleComment</td>
+        <td>GET</td>
+        <td><a th:href="@{/articles/{id}/articleComment(id=${id})}">
+            [[${id}]]번 게시글의 모든 댓글보기 성공</a></td>
+        <td>comment_view.html</td>
+    </tr>
+    <tr th:with="id=15, commentId=3">
+        <td>/articles/{id}/articleComments/{article-comment-id}/delete</td>
+        <td>GET</td>
+        <td><a th:href="@{/articles/{id}/articleComments/{commentId}/delete(id=${id},commentId=${commentId})}">
+            [[${id}]]번 게시글의 [[${comment}]]번째 답글 삭제 완료
+        </a></td>
+        <td>delete_ok.html</td>
+    </tr>
+
+
+
+</table>
 
 </body>
 </html>
