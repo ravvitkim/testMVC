@@ -69,9 +69,10 @@
     <tr th:with="id=15, commentId=3">
         <td>/articles/{id}/articleComments/{article-comment-id}/delete</td>
         <td>GET</td>
-        <td><a th:href="@{/articles/{id}/articleComments/{commentId}/delete(id=${id},commentId=${commentId})}">
-            [[${id}]]번 게시글의 [[${comment}]]번째 답글 삭제 완료
-        </a></td>
+        <td><a th:href="@{|/articles/${id}/articleComments/${commentId}/delete|}">
+            [[${id}]]번 게시글의 [[${commentId}]]번째 답글 삭제
+            </a>
+        </td>
         <td>delete_ok.html</td>
     </tr>
 
